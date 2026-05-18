@@ -20,7 +20,10 @@ def get_db_connection():
     )
 
 def get_redis():
-    return redis.Redis(host=os.getenv('REDIS_HOST'), port=int(os.getenv('REDIS_PORT')), db=0)
+    return redis.Redis(host=os.getenv('REDIS_HOST'), 
+                       port=int(os.getenv('REDIS_PORT')), 
+                       password=os.getenv('REDIS_PASSWORD'), 
+                       db=0)
 
 @app.route('/create-cache', methods=['POST'])
 def create_cache():
